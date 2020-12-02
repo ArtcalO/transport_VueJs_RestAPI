@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid" >
+  <div class="container-fluid">
     <app-header></app-header>
     <hr>
     <div>
-      <h3>Body</h3>
+      <router-view ></router-view>
     </div>
     <hr>
     <app-footer></app-footer>
@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Header  from './components/shared/header.vue';
-import Footer  from './components/shared/footer.vue';
+import Header  from './components/shared/Header.vue';
+import Footer  from './components/shared/Footer.vue';
 
 export default {
   components : {
@@ -22,7 +22,7 @@ export default {
   
 };
 </script>
-	
+
 <style>
 
 </style>

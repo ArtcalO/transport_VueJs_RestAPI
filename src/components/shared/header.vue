@@ -2,15 +2,15 @@
 <template>
   <header id="header">
     <div class="logo">
-      <router-link to="/">Bus Booking</router-link>
+      <router-link to="/">Marks Management</router-link>
     </div>
     <nav>
       <ul class="nav nav-pills">
      		<router-link to="/" tag="li" active-class="active" exact><a>Home</a></router-link>
+     		<router-link to="/admin" tag="li" active-class="active" ><a>Admin</a></router-link>
      		<router-link to="/register" tag="li" active-class="active" ><a>Register</a></router-link>
      		<router-link to="/connexion" tag="li" active-class="active" ><a>Connexion</a></router-link>
-     		<router-link to="/admin" tag="li" active-class="active" ><a>Admin</a></router-link>
-  	 </ul>
+    	</ul>
     </nav>
   </header>
 </template>
