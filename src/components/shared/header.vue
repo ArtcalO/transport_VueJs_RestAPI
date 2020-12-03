@@ -2,7 +2,7 @@
 <template>
   <header id="header">
     <div class="logo">
-      <router-link to="/">Marks Management</router-link>
+      <router-link to="/">Bus Booking</router-link>
     </div>
     <nav>
       <ul class="nav nav-pills">

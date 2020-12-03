@@ -1,8 +1,8 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <app-header></app-header>
     <hr>
-    <div>
+    <div class="container-fluid">
       <router-view ></router-view>
     </div>
     <hr>
