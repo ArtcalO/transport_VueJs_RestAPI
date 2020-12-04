@@ -8,7 +8,7 @@
                 <div class="col-9">
                   <a href="">
                     <div class="d-flex align-items-center align-self-start">
-                      <router-link to="/admin/add_trip"><h3 class="mb-0">+ Driver</h3></router-link>
+                      <router-link to="/admin/add_driver"><h3 class="mb-0">+ Driver</h3></router-link>
                     </div>
                   </a>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="col-9">
                   <a href="">
                     <div class="d-flex align-items-center align-self-start">
-                      <router-link to="/admin/add_trip"><h3 class="mb-0">+ Bus</h3></router-link>
+                      <router-link to="/admin/add_bus"><h3 class="mb-0">+ Bus</h3></router-link>
                     </div>
                   </a>
                 </div>
