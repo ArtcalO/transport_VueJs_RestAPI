@@ -28,7 +28,7 @@
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #521751;
+    background-color: #6499ff;
     padding: 0 20px;
   }
 
@@ -68,7 +68,7 @@
   li a:hover,
   li a:active,
   li a.router-link-active {
-    color: #fa923f;
+    color: white;
   }
 
   .logout {
