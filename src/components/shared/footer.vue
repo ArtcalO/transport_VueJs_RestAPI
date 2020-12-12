@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <h3>Footer</h3>
+  <div class="footer">
+    <h4 id="cright" class="text-white text-center">CopyRight HOGI|2020</h4>
   </div>
 </template>
 
@@ -10,6 +10,13 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+	.footer{
+		height: 100px;
+		background-color: black;
+		
+	}
+	#cright{
+		padding-top: 20px;
+	}
 </style>
