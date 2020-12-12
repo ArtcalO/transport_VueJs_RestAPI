@@ -6,9 +6,12 @@ import AddTrip from './components/AddTrip.vue';
 import AddDriver from './components/AddDriver.vue';
 import AddBus from './components/AddBus.vue';
 import AddPoint from './components/AddPoint.vue';
+import Client from './pages/Client.vue';
+import ClientHistory from './components/ClientHistoryTrip.vue';
+import BusMokup from './components/BusMokup.vue';
 
 export const routes = [
-	{path: '', component: Home},
+	{path: '/', component: Home},
 	{path: '/register', component: Register},
 	{path: '/connexion', component: Connexion},
 	{path: '/admin/add_trip', component: AddTrip},
@@ -16,4 +19,7 @@ export const routes = [
 	{path: '/admin/add_driver', component: AddDriver},
 	{path: '/admin/add_bus', component: AddBus},
 	{path: '/admin/add_scale_point', component: AddPoint},
+	{path: '/home', component: Client},
+	{path: '/history', component: ClientHistory},
+	{path: '/bus_mokup', component: BusMokup},
 ];
