@@ -7,6 +7,7 @@
     <nav>
       <ul class="nav nav-pills">
      		<router-link to="/" tag="li" active-class="active" exact><a>Home</a></router-link>
+        <router-link to="/history" tag="li" active-class="active" exact><a>History</a></router-link>
      		<router-link to="/admin" tag="li" active-class="active" ><a>Admin</a></router-link>
      		<router-link to="/register" tag="li" active-class="active" ><a>Register</a></router-link>
      		<router-link to="/connexion" tag="li" active-class="active" ><a>Connexion</a></router-link>
