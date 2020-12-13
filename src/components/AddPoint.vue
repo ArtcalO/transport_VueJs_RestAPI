@@ -12,20 +12,29 @@
 
 							<div class="form-group">
 								<span class="form-label">Province</span>
-								<select class="form-control">
-									<option>0</option>
-									<option>1</option>
-									<option>2</option>
+								<select
+									v-model="province"
+									class="form-control">
+									<option
+										v-for="provData in provinceData"
+										:value="provData.id"
+									>{{ provData.name }}</option>
 								</select>
 							</div>
 
 							<div class="form-group">
 								<span class="form-label">Escales</span>
-								<input class="form-control" type="text" >
+								<input
+									v-model="name_point"
+									class="form-control"
+									type="text" >
 							</div>
 							
 							<div class="form-btn">
-								<button class="submit-btn">Ajouter</button>
+								<button
+									type="button"
+									@click.prevent="addPoint"
+									class="submit-btn">Ajouter</button>
 							</div>
 						</form>
 					</div>
@@ -36,7 +45,40 @@
 </template>
 
 <script>
-	
+import axios from 'axios';
+export default {
+  data(){
+        return {
+        	provinceData : null,
+        	province : null,
+        	name_point : '',
+        	id_prov : 0,
+        }
+    },
+    mounted(){
+    	this.getProvinces();
+    },
+    methods : {
+    	getProvinces(){
+    		axios.get('http://127.0.0.1:8000/api/provinces/')
+    			.then((res)=>{
+    				console.log(res);
+    				this.provinceData = res.data;
+    			})
+    	},
+        addPoint(){
+                axios.post('http://127.0.0.1:8000/api/points/', {
+
+                    province : this.province,
+                    name_point : this.name_point,
+                        }).then(() => {
+                            window.location = "/admin";
+                        }).catch(error => console.log(error));
+            }
+            
+            
+        },
+};
 </script>
 
 <style scoped>
