@@ -36,6 +36,7 @@
         <div class="seat">1</div>
         <div class="seat">1</div>
       </div>
+
     <div class="caption">
       <div class="captionBox">
         <p class="captionTag">Libre</p>
@@ -46,8 +47,8 @@
       <div class="captionBox">
         <p class="captionTag">Attente</p>
       </div>
-      
     </div>
+    
   </div>
 </div>
   </div>
