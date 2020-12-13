@@ -14,51 +14,47 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Nom</span>
-										<input class="form-control" type="text" placeholder="Votre nom">
+										<input
+										 v-model="name"
+										 class="form-control"
+										 type="text"
+										 placeholder="Votre nom">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Prenom</span>
-										<input class="form-control" type="text" placeholder="Votre prenom">
+										<input
+											v-model="subname"
+											class="form-control"
+											type="text"
+											placeholder="Votre prenom">
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<span class="form-label">Matricule</span>
-								<input class="form-control" type="text" placeholder="Matricule">
+								<input
+									v-model="matricule"
+									class="form-control"
+									type="text"
+									placeholder="Matricule">
 							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Date naisssance</span>
-										<input class="form-control" type="date" required>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Engagee le:</span>
-										<input class="form-control" type="date" required>
-									</div>
-								</div>
+							<div class="form-group">
+								<span class="form-label">Tel</span>
+								<input
+									v-model="phone"
+									class="form-control"
+									type="number"
+									placeholder="Tel">
 							</div>
-
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Adresse</span>
-										<input class="form-control" type="text" placeholder="Votre addresse">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Tel.</span>
-										<input class="form-control" type="number" placeholder="Telephone">
-									</div>
-								</div>
-							</div>
+							
 							<div class="form-btn">
-								<button class="submit-btn">Enregistrer</button>
+								<button
+									type="button"
+									class="submit-btn" 
+									@click.prevent="addDriver"
+								>Enregistrer</button>
 							</div>
 						</form>
 					</div>
@@ -69,9 +65,32 @@
 </template>
 
 <script>
-	
+import axios from 'axios';
+export default {
+  data(){
+        return {
+            name : '',
+			subname : '',
+			matricule : '',
+			phone : 0,
+        }
+    },
+    methods : {
+        addDriver(){
+                axios.post('http://127.0.0.1:8000/api/drivers/', {
+                    name : this.name,
+                    subname : this.subname,
+                    matricule : this.matricule,
+                    phone : this.phone,
+                        }).then(() => {
+                            window.location = "/admin";
+                        }).catch(error => console.log(error));
+            }
+            
+            
+        },
+};
 </script>
-
 <style scoped >
 .section {
 	position: relative;
