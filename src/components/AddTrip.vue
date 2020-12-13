@@ -11,43 +11,59 @@
 							</div>
 							<div class="form-group">
 								<span class="form-label">Chauffeur</span>
-								<select class="form-control">
-									<option>0</option>
-									<option>1</option>
-									<option>2</option>
+								<select 
+									v-model="bus_driver"
+									class="form-control">
+									<option
+										v-for="driverD in driversData"
+										:value="driverD.id"
+									>{{ driverD.name }} {{ driverD.subname }}</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<span class="form-label">Bus</span>
-								<select class="form-control">
-									<option>0</option>
-									<option>1</option>
-									<option>2</option>
+								<select
+									v-model="bus" 
+									class="form-control">
+									<option
+										v-for="busD in busData"
+										:value="busD.id"
+										>{{ busD.bus_type }} : {{ busD.immatriculation }}</option>
 								</select>
 							</div>
 
 							<div class="form-group">
 								<span class="form-label">Depart</span>
-								<select class="form-control">
-									<option>0</option>
-									<option>1</option>
-									<option>2</option>
+								<select
+									v-model="start_point"
+									class="form-control">
+									<option
+										v-for="depart in pointsData"
+										:value="depart.id"
+										>{{ depart.name }}</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<span class="form-label">Escales</span>
-								<select class="form-control" multiple>
-									<option>0</option>
-									<option>1</option>
-									<option>2</option>
+								<select
+									v-model="sacle_points"
+									class="form-control"
+									multiple>
+									<option
+										v-for="scale in scalesData"
+										:value="scale.id"
+										>{{ scale.name_point }}</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<span class="form-label">Arrivé</span>
-								<select class="form-control">
-									<option>0</option>
-									<option>1</option>
-									<option>2</option>
+								<select
+									v-model="end_point"
+									class="form-control">
+									<option
+										v-for="arrive in pointsData"
+										:value="arrive.id"
+										>{{ arrive.name }}</option>
 								</select>
 							</div>
 
@@ -55,24 +71,35 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Heure Depat</span>
-										<input class="form-control" type="date" >
+										<input
+											v-model="start_hour"
+											class="form-control"
+											type="date" >
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Heure Arriver</span>
-										<input class="form-control" type="date" >
+										<input
+											v-model="arrive_hour"
+											class="form-control"
+											type="date" >
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<span class="form-label">Montant</span>
-								<input class="form-control" type="number" placeholder="Enter your email">
+								<input
+									v-model="amount"
+									class="form-control"
+									type="number">
 							</div>
 
 							
 							<div class="form-btn">
-								<button class="submit-btn">Ajouter</button>
+								<button
+									@click.prevent="addTrip"
+									class="submit-btn">Ajouter</button>
 							</div>
 						</form>
 					</div>
@@ -83,7 +110,82 @@
 </template>
 
 <script>
-	
+
+
+</script>
+
+<script>
+import axios from 'axios';
+export default {
+  data(){
+        return {
+        		bus_driver : null,
+        		driversData : null,
+				bus : null,
+				busData : null,
+				start_point : null,
+				end_point : null,
+				pointsData : null,
+				sacle_points : [],
+				scalesData : null,
+				start_hour : '',
+				arrive_hour : '',
+				amount : 0,
+        }
+    },
+    mounted(){
+    	this.getDrivers();
+    	this.getBuses();
+    	this.getProvinces();
+    	this.getScales();
+    },
+    methods : {
+    	getDrivers(){
+    		axios.get('http://127.0.0.1:8000/api/drivers/')
+    			.then((res)=>{
+    				console.log(res);
+    				this.driversData = res.data;
+    			})
+    	},
+    	getBuses(){
+    		axios.get('http://127.0.0.1:8000/api/buses/')
+    			.then((res)=>{
+    				console.log(res);
+    				this.busData = res.data;
+    			})
+    	},
+    	getProvinces(){
+    		axios.get('http://127.0.0.1:8000/api/provinces/')
+    			.then((res)=>{
+    				console.log(res);
+    				this.pointsData = res.data;
+    			})
+    	},
+    	getScales(){
+    		axios.get('http://127.0.0.1:8000/api/points/')
+    			.then((res)=>{
+    				console.log(res);
+    				this.scalesData = res.data;
+    			})
+    	},
+
+        addTrip(){
+                axios.post('http://127.0.0.1:8000/api/trips/', {
+                    bus_driver : this.bus_driver,
+					bus : this.bus,
+					start_point : this.start_point,
+					end_point : this.end_point,
+					sacle_points : this.sacle_points,
+					start_hour : this.start_hour,
+					arrive_hour : this.arrive_hour,
+					amount : this.amount,
+                        }).then(() => {
+                            window.location = "/admin";
+                        }).catch(error => console.log(error));
+            }
+            
+        },
+};
 </script>
 
 <style scoped>
