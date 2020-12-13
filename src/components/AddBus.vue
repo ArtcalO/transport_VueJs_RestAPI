@@ -12,30 +12,48 @@
 
 							<div class="form-group">
 								<span class="form-label">Type de bus</span>
-								<input class="form-control" type="text" placeholder="type bus">
+								<input
+									v-model="bus_type"
+									class="form-control"
+									type="text"
+									placeholder="type bus">
 							</div>
 
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Plaque</span>
-										<input class="form-control" type="text" placeholder="plaque">
+										<input
+											v-model="immatriculation"
+											class="form-control"
+											type="text"
+											placeholder="plaque">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Places</span>
-										<input class="form-control" type="number" placeholder="places">
+										<input
+											v-model="total_seat"
+											class="form-control"
+											type="number"
+											placeholder="places">
 									</div>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<span class="form-label">Marque</span>
-								<input class="form-control" type="text" placeholder="Mark">
+								<input
+									v-model="mark"
+									class="form-control"
+									type="text"
+									placeholder="Mark">
 							</div>
 							<div class="form-btn">
-								<button class="submit-btn">Enregistrer</button>
+								<button 
+									@click.prevent="addBus"
+									class="submit-btn">Enregistrer</button>
 							</div>
 						</form>
 					</div>
@@ -44,9 +62,33 @@
 		</div>
 	</div>
 </template>
-
 <script>
-	
+import axios from 'axios';
+export default {
+  data(){
+        return {
+        	mark : '',
+			total_seat :0,
+			immatriculation : '',
+			bus_type : '',
+        }
+    },
+
+    methods : {
+        addBus(){
+                axios.post('http://127.0.0.1:8000/api/buses/', {
+					mark : this.mark,
+					total_seat : this.total_seat,
+					immatriculation : this.immatriculation,
+					bus_type : this.bus_type,
+                        }).then(() => {
+                            window.location = "/admin";
+                        }).catch(error => console.log(error));
+            }
+            
+            
+        },
+};
 </script>
 
 <style scoped >
