@@ -110,11 +110,6 @@
 </template>
 
 <script>
-
-
-</script>
-
-<script>
 import axios from 'axios';
 export default {
   data(){
@@ -180,7 +175,7 @@ export default {
 					arrive_hour : this.arrive_hour,
 					amount : this.amount,
                         }).then(() => {
-                            window.location = "/admin";
+                            this.$route.push('/admin');
                         }).catch(error => console.log(error));
             }
             

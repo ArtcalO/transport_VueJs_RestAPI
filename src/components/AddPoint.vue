@@ -72,7 +72,7 @@ export default {
                     province : this.province,
                     name_point : this.name_point,
                         }).then(() => {
-                            window.location = "/admin";
+                           this.$route.push('/admin');
                         }).catch(error => console.log(error));
             }
             
