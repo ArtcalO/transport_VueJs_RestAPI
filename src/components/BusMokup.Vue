@@ -5,36 +5,11 @@
     </div>
     <div class="container">
       <div class="bus" >
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
-        <div class="seat">1</div>
+        <div
+            v-for="seat in seatData"
+            class="seat"
+            @click="bookForm"
+        >{{ seat.id }}</div>
       </div>
 
     <div class="caption">
@@ -55,9 +30,41 @@
 </template>
 
 <script>
+  import { eventBus } from '../main';
+  import BookingForm from './BookingForm.vue';
+  import axios from 'axios';
   export default {
-    
-  };
+    data(){
+      return{
+        seatData : null,
+      }
+    },
+    props :['bus_Id'],
+    components : {
+      BookingForm : 'app-booking-form'
+    },
+    created(){
+        eventBus.$on('detailEmited',(bus_Id)=>{
+          this.bus_Id = bus_Id;
+          alert(this.bus_Id);
+      });
+    },
+    mounted(){
+      this.getSeats();
+    },
+    methods :{
+      bookForm(){
+        this.$router.push('/booking')
+      },
+      getSeats(){
+        axios.get('http://127.0.0.1:8000/api/seats/3')
+          .then((res)=>{
+            console.log(res);
+            this.seatData = res.data;
+          })
+      },
+    },
+  }
 </script>
 
 <style scoped>
@@ -90,6 +97,15 @@
     margin-right: 15px;
     margin-bottom: 15px;
 
+  }
+
+  .seat:hover{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    cursor: pointer;
+    border:0.5px solid black;
+    color: blue;
   }
 
   .captionBox{

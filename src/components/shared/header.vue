@@ -29,7 +29,7 @@
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #6499ff;
+    background-color: rgb(2,41,191);
     padding: 0 20px;
   }
 
