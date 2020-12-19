@@ -9,6 +9,8 @@ import AddPoint from './components/AddPoint.vue';
 import Client from './pages/Client.vue';
 import ClientHistory from './components/ClientHistoryTrip.vue';
 import BusMokup from './components/BusMokup.vue';
+import BookingForm from './components/BookingForm.vue';
+import DisplaTrip from './components/DisplayTrip.vue';
 
 export const routes = [
 	{path: '/', component: Home},
@@ -22,4 +24,6 @@ export const routes = [
 	{path: '/home', component: Client},
 	{path: '/history', component: ClientHistory},
 	{path: '/bus_mokup', component: BusMokup},
+	{path: '/booking', component: BookingForm},
+	{path: '/search', component: DisplaTrip},
 ];
