@@ -59,8 +59,6 @@ export default {
 	},
   	data(){
         return {
-        	tripId : 0,
-        	Idbus : 0,
         	searchResult : true,
         	tripsData : null,
 				
@@ -76,16 +74,15 @@ export default {
     			.then((res)=>{ 
     				if(res.data.length != 0){
     					this.tripsData = res.data;
+    					this.$store.state.tripId = res.data.id;
     				}else{
     					this.searchResult=false
     				}
 
     			})
     	},
-    	details(busId){
-    		this.busId=busId;
-    		alert(this.busId);
-    		eventBus.$emit('detailEmited',this.busId);
+    	details(data){
+    		this.$store.state.idDetail = data;
     		this.$router.push({path: '/bus_mokup', query: { trip : this.from+'+to+'+this.to}});
 
     	}       
