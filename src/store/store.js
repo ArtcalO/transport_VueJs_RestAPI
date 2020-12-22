@@ -5,12 +5,9 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
 	state:{
-		courses : ['Kirundi'],
-		students : [
-			{Name : 'NIYUNGEKO', Subname : 'Carmel', Age : 30}
-		],
-		marks : [
-			{Student : 'NIYUNGEKO Carmel', Course : 'Kirundi', Mark : 12}
-		]
-	},
+		idDetail:0,
+		seatIdDeatail:0,
+		tripId:0,
+		destination : ''
+	}
 });
