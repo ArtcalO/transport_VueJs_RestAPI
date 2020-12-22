@@ -42,6 +42,7 @@ export default {
 	methods : {
 		change(){
 			this.research = true;
+			this.$store.state.destination = this.to;
 		}
 	}
 
