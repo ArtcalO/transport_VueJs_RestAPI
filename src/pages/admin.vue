@@ -23,12 +23,19 @@
         </div>
       </div>
   </div>
+
+  <hr>
+  <h3>En attente de validation</h3>
+    <app-request-booking></app-request-booking>
   </div>
 </template>
 
 <script>
+  import RequestBooking from '../components/RequestBooking.vue'
   export default {
-    
+    components : {
+      'app-request-booking':RequestBooking
+    }
   };
 </script>
 
