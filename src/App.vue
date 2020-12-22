@@ -24,5 +24,14 @@ export default {
 </script>
 
 <style>
-
+  .mainBackground{
+    background-color: rgb(196,216,226);
+    height: 500px;
+  }
+  @media only screen and (max-width: 480px) {
+  .mainBackground {
+    width: auto;
+    height: auto;
+  }
+}
 </style>
