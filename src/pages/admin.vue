@@ -22,6 +22,11 @@
           <router-link to="/admin/add_scale_point"><h3 class="mb-0">+ Scale Points</h3></router-link>
         </div>
       </div>
+      <div class="card bg-outline-warning">
+        <div class="card-body text-center">
+          <router-link to="/admin/booking_history"><h3 class="mb-0">Bookings</h3></router-link>
+        </div>
+      </div>
   </div>
 
   <hr>

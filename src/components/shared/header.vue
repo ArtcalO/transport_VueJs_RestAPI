@@ -8,7 +8,8 @@
       <ul class="nav nav-pills">
      		<router-link to="/" tag="li" active-class="active" exact><a>Home</a></router-link>
         <router-link to="/history" tag="li" active-class="active" exact><a>History</a></router-link>
-     		<router-link to="/admin" tag="li" active-class="active" ><a>Admin</a></router-link>
+     		<router-link to="/admin" tag="li" active-class="active" ><a>Admin <span class="badge badge-light">{{ bookingData }}</span></a></router-link>
+        <router-link to="/home" tag="li" active-class="active" exact><a>Client <span class="badge badge-light">9</span></a></router-link>
      		<router-link to="/register" tag="li" active-class="active" ><a>Register</a></router-link>
      		<router-link to="/connexion" tag="li" active-class="active" ><a>Connexion</a></router-link>
     	</ul>
@@ -17,9 +18,35 @@
 </template>
 
 <script>
-  export default {
-    
-  };
+export default {
+
+    data(){
+        return {
+          pending:'True',
+          bookingData : null,
+        
+        }
+    },
+    mounted(){
+      this.getBookings();
+      
+    },
+    methods : {
+      getBookings(){
+        axios.get('http://127.0.0.1:8000/api/bookings/')
+          .then((res)=>{
+            console.log(res.data);
+            if(res.data.length != 0){
+              this.bookingData = res.data.length;
+            }else{
+              console.log('error');
+            }
+
+          })
+      },
+    }
+};
+
 </script>
 
 <style scoped >
