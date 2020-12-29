@@ -83,7 +83,7 @@ export default {
                     matricule : this.matricule,
                     phone : this.phone,
                         }).then(() => {
-                            this.$route.push('/admin');
+                            this.$router.push('/admin');
                         }).catch(error => console.log(error));
             }
             
