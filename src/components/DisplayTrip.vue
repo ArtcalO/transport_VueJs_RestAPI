@@ -22,7 +22,7 @@
 					      	</p>
 					      	<form method="POST">
 					      		<button 
-					      			@click.prevent="details(tripD.bus.id)"
+					      			@click.prevent="details(tripD.bus.id, tripD.id)"
 					      			class="btn btn-outline-primary">Details</button>
 					      	</form>
 					    </div>
@@ -73,16 +73,18 @@ export default {
     		axios.get('http://127.0.0.1:8000/api/trips/'+this.from+'-'+this.to)
     			.then((res)=>{ 
     				if(res.data.length != 0){
+    					console.log(res.data)
     					this.tripsData = res.data;
-    					this.$store.state.tripId = res.data.id;
+    					
     				}else{
     					this.searchResult=false
     				}
 
     			})
     	},
-    	details(data){
-    		this.$store.state.idDetail = data;
+    	details(dataBusId, dataTripId){
+    		this.$store.state.idDetail = dataBusId;
+    		this.$store.state.tripId = dataTripId;
     		this.$router.push({path: '/bus_mokup', query: { trip : this.from+'+to+'+this.to}});
 
     	}       
