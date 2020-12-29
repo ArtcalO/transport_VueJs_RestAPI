@@ -37,9 +37,10 @@ export default {
                 seat : this.$store.state.seatIdDeatail,
                 payement : 1,
                 transaction_code : this.transCode, 
-                trip : 2,
-                pending : true,
-                destination : this.$store.state.destination                   
+                trip : this.$store.state.tripId,
+                pending : 'True',
+                destination : this.$store.state.destination,
+                paid : 'False'
                     }).then(() => {
                     	axios.patch('http://127.0.0.1:8000/api/seats/'+this.$store.state.seatIdDeatail+'/',{
                     		pending : 'True'
