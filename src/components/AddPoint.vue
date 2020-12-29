@@ -52,7 +52,6 @@ export default {
         	provinceData : null,
         	province : null,
         	name_point : '',
-        	id_prov : 0,
         }
     },
     mounted(){
@@ -68,11 +67,11 @@ export default {
     	},
         addPoint(){
                 axios.post('http://127.0.0.1:8000/api/points/', {
-
                     province : this.province,
                     name_point : this.name_point,
                         }).then(() => {
-                           this.$route.push('/admin');
+                        	console.log('############'+this.province);
+                           this.$router.push('/admin');
                         }).catch(error => console.log(error));
             }
             
