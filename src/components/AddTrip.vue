@@ -174,8 +174,9 @@ export default {
 					start_hour : this.start_hour,
 					arrive_hour : this.arrive_hour,
 					amount : this.amount,
+					finished : 'False'
                         }).then(() => {
-                            this.$route.push('/admin');
+                            this.$router.push('/admin');
                         }).catch(error => console.log(error));
             }
             
