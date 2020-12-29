@@ -54,8 +54,9 @@ export default {
     },
     methods : {
     	getBookings(){
-    		axios.get('http://127.0.0.1:8000/api/bookings/booking-'+this.pending)
-    			.then((res)=>{ 
+    		axios.get('http://127.0.0.1:8000/api/bookings/pending-'+this.pending)
+    			.then((res)=>{
+    				console.log(res.data);
     				if(res.data.length != 0){
     					this.bookingData = res.data;
     				}else{
