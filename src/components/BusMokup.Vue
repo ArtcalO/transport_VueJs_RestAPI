@@ -15,7 +15,7 @@
             class="seat"
             @click="bookForm(seat.id)"
             :class="{pending:seat.pending, booked:seat.booked}"
-        >{{ seat.id }}</div>
+        >{{ seat.seat_number }}</div>
       </div>
 
     <div class="caption">
@@ -68,7 +68,7 @@
           })
       },
     },
-  }
+  };
 </script>
 
 <style scoped>
@@ -167,9 +167,6 @@
   .minifiedCaption p{
     display: inline;
   }
-
-
-
 }
 
 
