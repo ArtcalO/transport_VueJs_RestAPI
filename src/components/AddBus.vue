@@ -82,7 +82,7 @@ export default {
 					immatriculation : this.immatriculation,
 					bus_type : this.bus_type,
                         }).then(() => {
-                            this.$route.push('/admin');
+                            this.$router.push('/admin');
                         }).catch(error => console.log(error));
             }
             
