@@ -7,9 +7,9 @@
     <nav>
       <ul class="nav nav-pills">
      		<router-link to="/" tag="li" active-class="active" exact><a>Home</a></router-link>
-        <router-link to="/history" tag="li" active-class="active" exact><a>History</a></router-link>
+        <router-link to="/history" tag="li" active-class="active" exact><a>Client History</a></router-link>
      		<router-link to="/admin" tag="li" active-class="active" ><a>Admin <span class="badge badge-light">{{ bookingData }}</span></a></router-link>
-        <router-link to="/home" tag="li" active-class="active" exact><a>Client <span class="badge badge-light">9</span></a></router-link>
+        <router-link to="/home" tag="li" active-class="active" exact><a>Client <span class="badge badge-light">{{ validatedData }}</span></a></router-link>
      		<router-link to="/register" tag="li" active-class="active" ><a>Register</a></router-link>
      		<router-link to="/connexion" tag="li" active-class="active" ><a>Connexion</a></router-link>
     	</ul>
@@ -25,6 +25,8 @@ export default {
         return {
           pending:'True',
           bookingData : null,
+          validatedData : null,
+          validated : 'True'
         
         }
     },
@@ -34,11 +36,23 @@ export default {
     },
     methods : {
       getBookings(){
-        axios.get('http://127.0.0.1:8000/api/bookings/')
+        axios.get('http://127.0.0.1:8000/api/bookings/pending/'+this.pending)
           .then((res)=>{
             console.log(res.data);
             if(res.data.length != 0){
               this.bookingData = res.data.length;
+            }else{
+              console.log('error');
+            }
+
+          })
+      },
+      getValidated(){
+        axios.get('http://127.0.0.1:8000/api/bookings/booked/'+this.validated)
+          .then((res)=>{
+            console.log(res.data);
+            if(res.data.length != 0){
+              this.validatedData = res.data.length;
             }else{
               console.log('error');
             }

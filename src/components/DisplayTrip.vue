@@ -68,9 +68,9 @@ export default {
     	this.getTrips();
     	
     },
-    methods : {
+	methods : {
     	getTrips(){
-    		axios.get('http://127.0.0.1:8000/api/trips/'+this.from+'-'+this.to)
+    		axios.get('http://127.0.0.1:8000/api/trips/searchedtrip/'+this.from+'/'+this.to)
     			.then((res)=>{ 
     				if(res.data.length != 0){
     					console.log(res.data)
@@ -80,7 +80,7 @@ export default {
     					this.searchResult=false
     				}
 
-    			})
+    			}).catch(error => console.log(error));
     	},
     	details(dataBusId, dataTripId){
     		this.$store.state.idDetail = dataBusId;

@@ -1,7 +1,7 @@
 <template>
 	  <div class="container">
         <div class=" mb-3">
-        	<span class="alert alert-warning" >Lumicash : 120320120</span>
+        	<span class="alert alert-warning mb-5" >Lumicash : 120320120</span>
 			 <form class="form-group" action="">
 				  <label class="mr-sm-2">Code Transaction : </label>
 				  <input
@@ -40,7 +40,8 @@ export default {
                 trip : this.$store.state.tripId,
                 pending : 'True',
                 destination : this.$store.state.destination,
-                paid : 'False'
+                paid : 'False',
+                booked : 'False'
                     }).then(() => {
                     	axios.patch('http://127.0.0.1:8000/api/seats/'+this.$store.state.seatIdDeatail+'/',{
                     		pending : 'True'

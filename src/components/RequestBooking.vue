@@ -54,7 +54,7 @@ export default {
     },
     methods : {
     	getBookings(){
-    		axios.get('http://127.0.0.1:8000/api/bookings/pending-'+this.pending)
+    		axios.get('http://127.0.0.1:8000/api/bookings/pending/'+this.pending)
     			.then((res)=>{
     				console.log(res.data);
     				if(res.data.length != 0){
@@ -65,12 +65,13 @@ export default {
 
     			})
     	},
-    	validate(dataBooking, dataBus){
-    		this.bookingId = dataBooking;
-    		this.seatId=dataBus;
+    	validate(id_booking, id_seat){
+    		this.bookingId = id_booking;
+    		this.seatId=id_seat;
     		axios.patch('http://127.0.0.1:8000/api/bookings/'+this.bookingId+'/',{
     			paid : 'True',
 				booked : 'True',
+				pending : 'False'
     		}).then(()=>{
     			axios.patch('http://127.0.0.1:8000/api/seats/'+this.seatId+'/',{
     				booked : 'True',

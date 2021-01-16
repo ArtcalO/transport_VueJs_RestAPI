@@ -1,9 +1,10 @@
 <template>
 	<div>
-		<div
-			v-for="bookingD in bookingData"
-			class="card-columns">
-		  	<div class="card bg-light">
+		<h4 class="mb-4">Historique</h4>
+		<div class="card-columns">
+		  	<div
+		  		v-for="bookingD in bookingData"
+		  		class="card bg-light">
 			    <div class="card-body text-center">
 			      <p class="card-text bg-info ">Demandeur : 
 			      	<span class="text-white" >NIYUNGEKO Carmel</span>
@@ -21,9 +22,6 @@
 			      	<p>Destination : {{ bookingD.destination }}</p>
 			      </center>
 			      	<form method="POST">
-			      		<button 
-			      			@click.prevent="validate(bookingD.id,bookingD.seat)"
-			      			class="btn btn-outline-danger">Valider</button>
 			      		<button 
 			      			@click.prevent="details"
 			      			class="btn btn-outline-primary">Details</button>

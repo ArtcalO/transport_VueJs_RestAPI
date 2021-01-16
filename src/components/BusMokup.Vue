@@ -61,7 +61,7 @@
         this.$router.push({path: '/booking', query: { seat : this.$store.state.seatIdDeatail}});
       },
       getSeatsForBus(){
-        axios.get('http://127.0.0.1:8000/api/seats/bus-'+this.$store.state.idDetail)
+        axios.get('http://127.0.0.1:8000/api/seats/seatbybus/'+this.$store.state.idDetail)
           .then((res)=>{
             console.log(res);
             this.seatData = res.data;
